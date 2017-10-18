@@ -8,6 +8,11 @@ Below is the link
 http://www.softpedia.com/get/Network-Tools/Network-Monitoring/Wi-Fi-Scanner.shtml
 
 In order to use this library you would have to have your laptop connected to your IRoomba using an Edimax nano wifi chip adapter and a WiFi to serial for the serial port on the Roomba.
+Below is the link for the edimax nano usb and roomba wifi-card
+
+https://www.walmart.com/ip/Edimax-Network-EW-7811UN-Wi-Fi-N-150M-2-0-Mini-Nano-Wi-Fi-Adapter-NEW/17419471?wmlspartner=wlpa&selectedSellerId=0&adid=22222222227014437374&wl0=&wl1=g&wl2=c&wl3=40882078712&wl4=pla-78811760912&wl5=9007300&wl6=&wl7=&wl8=&wl9=pla&wl10=8175035&wl11=online&wl12=17419471&wl13=&veh=sem
+
+http://www.robotshop.com/en/roowifi-wifi-module-roomba-v2.html?gclid=EAIaIQobChMIxb3T84r71gIVg0CGCh1Ccgo5EAYYASABEgIFiPD_BwE
 
 Connect to your Roomba using Wi-fi scanner .Right click on the wifi name and click connect. You will know it is connected when the device youre trying to connect to is in bold font.
 
@@ -41,6 +46,6 @@ We can now run the simulation on simulink and it will connect  to the Roomba and
 is in front . There are 6 individual sensors that will display a 1 of your hand is in front or 0 if your hand is not in front.
 
 You can change the values of the constants and this will change where your roomba will move. If you type 1 for left and 1 for right your Roomba will drive forward. If you type -1 for left andf -1 for right your Roomba will move backwards
-.
+
 
 
