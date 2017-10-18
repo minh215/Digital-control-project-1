@@ -1,62 +1,46 @@
-# Digital-control-project-1
-project for Dr.Bai ROOMBA
+You can download the IRobot Create 2 mathlab toolbox from online. This  Toolbox has all the functions you will need for interfacing with IRoomba.
 
-Attach wficard to Roomba
-Install edimax wifi chip and connect to 
-your roomba
+This is the link to download the matlab toolbox- 
+https://www.mathworks.com/matlabcentral/fileexchange/52644-matlab-toolbox-for-the-irobot-create-2
 
-First download icreate from the matlab add on package.
-Set path into Mathlab folder under download
+Download wifi scanner 3.4 from the internet 
+Below is the link 
+http://www.softpedia.com/get/Network-Tools/Network-Monitoring/Wi-Fi-Scanner.shtml
 
-First you have to create a library 
+In order to use this library you would have to have your laptop connected to your IRoomba using an Edimax nano wifi chip adapter and a WiFi to serial for the serial port on the Roomba.
 
-Go to simulink and create library
+Connect to your Roomba using Wi-fi scanner .Right click on the wifi name and click connect. You will know it is connected when the device youre trying to connect to is in bold font.
 
-Create a chart for the wifi initializiation
+Open matlab then start simulink. Go to file and open the library block .
 
-Go inside the chart and create a function that calls from workspace
+Open the library block which has 3 blocks. The first is the wifi block which controls the connection to your local network
+of 10.0.0.1   . This block has a function that will  allow simulkink to control the Roomba over wifi.  
 
-then create a block that calls that function
+The second block is the IR block. This block has the function to call  and make the IR sensors to read and report if there is an object in front of each of its sensors. When there is an object the sensor will report a 1. When there is no object the sensor will reprt a 0
 
-click on the function block which takes you into the matlab workspace
+The third block is the wheel block. This block controls the left and right wheel of the Roomba. Inside this block there is a function that controls the wheel speed of the left and right wheel.
 
-create the function for the wif init function.
- 
- create a function call tcpint
+Now open a new blank model on simulink and copy all three library blocks. Paste this into the new blank model
+Move the Wifi block to the far left. Move the IR block to top center and move the wheel to the far right.
 
-make a persisten class call obj
+Now connect the from wifi block output "out1" to the IR block  input "wifiIn". Branch out a connection from the wifi block output "out1" into the wheel block input  "wifin" .
 
-Use coder.extrinsic to call the function roombawifi
+Now double click anywhere on the blank model space and type in "constant" and select the first one. Now copy and paste it so you
+have 2 constant block. 
 
-then use the same code with"assignin"
+Connect one constant to the wheel block "left".  Connect on constant to the wheel block "right".
 
-if statement if object is empty it will take the value of the function roombawifi
-which has the ip adress to connect to the Roomba
+Now double click anywhere on blank model space and type "display" and click on it. Now connect the output from the IR block "IRSigs"
+to the input of the display. This will show you the values of the ir sensors during the simulation.
 
-create a global variable to take on the obj which has the value of the roomba ip address
+Now go back to the constants and type -0.5 for left constand and 0.5 for right constant. You can type in any value from -5 to 5. Negative valuyes the wheel will spin backwards. Positive value the wheel will spin right. For this specific value  -0.5 for left and 0.5 for the right will cause the Roomba to rotate counterclockwise.
 
-That comppletes code for tcpint which connects the computer to roomba using wifi
+Now with everything connected we can go ahead and power on the Roomba by presssing the power button. Make sure we are connected to the Roomba by checking our wi-fi scanner app. 
 
-highlight the library block and create a subsystem. Define the outputs and inputs
+We can now run the simulation on simulink and it will connect  to the Roomba and cause it to spin counter-clockwise. During the simulation you can put your hand in front of the roomba and it will display on the simulink display depending on which sensor your hand
+is in front . There are 6 individual sensors that will display a 1 of your hand is in front or 0 if your hand is not in front.
 
- now create a chart for the wheel controller
-
- inside the chart use the function to call on the premade function "SetWheelVelRoomba"
-Create the 3 inputs which are left ,right, and wifi in. You can name it anything you like.
-that completes the wheel part.
-
- create a chart for the ir. Inside the chart create a function that call the "rangeStateRoomba" function
-inside the chart create inut from wifi in and output in my case was irsigs.
-
- Save the library
-
-drag the library into worskspace. Connect the wifi block output into the ir block and whhel block as input. 
-Create 2 constant input for the left and right wheel. connect the output of the ir block into a display .
-
- connect to your roomba using the edimax chip and wificard. Run the simulations and the display should display 1 or 0 in reltime 
-depending if there are objects in front of the sensor or  not
-
- u can adjust the speed of each individual wheel . The range is -5 to 5 and this should 
-change the speed of the wheels in realtime.
+You can change the values of the constants and this will change where your roomba will move. If you type 1 for left and 1 for right your Roomba will drive forward. If you type -1 for left andf -1 for right your Roomba will move backwards
+.
 
 
